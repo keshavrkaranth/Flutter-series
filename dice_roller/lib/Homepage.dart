@@ -18,40 +18,71 @@ class _HomepageState extends State<Homepage> {
   AssetImage six = AssetImage('images/six.png');
 
   AssetImage diceImage;
+  AssetImage sdiceImage;
 
   @override
   void initState() {
     super.initState();
     setState(() {
       diceImage = one;
+      sdiceImage = six;
     });
   }
 
   void onClick() {
     int rand = (1 + Random().nextInt(6));
+    int rand1 = (1 + Random().nextInt(6));
     AssetImage newImg;
+    AssetImage snewImg;
     switch (rand) {
       case 1:
         newImg = one;
+        snewImg = one;
         break;
       case 2:
         newImg = two;
+        snewImg = two;
         break;
       case 3:
         newImg = three;
+        snewImg = three;
         break;
       case 4:
         newImg = four;
+        snewImg = four;
         break;
       case 5:
         newImg = five;
+        snewImg = five;
         break;
       case 6:
         newImg = six;
+        snewImg = six;
+        break;
+    }
+    switch (rand1) {
+      case 1:
+        snewImg = one;
+        break;
+      case 2:
+        snewImg = two;
+        break;
+      case 3:
+        snewImg = three;
+        break;
+      case 4:
+        snewImg = four;
+        break;
+      case 5:
+        snewImg = five;
+        break;
+      case 6:
+        snewImg = six;
         break;
     }
     setState(() {
       diceImage = newImg;
+      sdiceImage = snewImg;
     });
   }
 
@@ -64,10 +95,23 @@ class _HomepageState extends State<Homepage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image(
-            image: diceImage,
-            width: 500.0,
-            height: 300.0,
+          Container(
+            margin: EdgeInsets.only(left: 20, right: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Image(
+                  image: diceImage,
+                  width: 150.0,
+                  height: 150.0,
+                ),
+                Image(
+                  image: sdiceImage,
+                  width: 150.0,
+                  height: 150.0,
+                ),
+              ],
+            ),
           ),
           Container(
             margin: EdgeInsets.only(top: 100),
